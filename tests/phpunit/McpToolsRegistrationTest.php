@@ -642,8 +642,7 @@ class McpToolsRegistrationTest extends WP_UnitTestCase {
 	 */
 	public function test_call_tool_endpoint_with_non_existent_rest_route(): void {
 		// Register a test tool with a non-existent REST API route.
-		$this->expectException( \InvalidArgumentException::class );
-		$this->expectExceptionMessage( 'The route /wp/v2/non_existent_route with method GET does not exist.' );
+		// The registration should be silently skipped and logged as an error.
 
 		add_action(
 			'wordpress_mcp_init',
@@ -663,6 +662,11 @@ class McpToolsRegistrationTest extends WP_UnitTestCase {
 		);
 
 		do_action( 'wordpress_mcp_init' );
+
+		// Verify that the tool was NOT registered since the route doesn't exist.
+		$registered_tools = $this->mcp->get_tools();
+		$tool_names = array_column( $registered_tools, 'name' );
+		$this->assertNotContains( 'non_existent_route_tool', $tool_names, 'Tool with non-existent route should not be registered' );
 	}
 
 	/**
