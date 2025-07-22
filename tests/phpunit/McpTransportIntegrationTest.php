@@ -240,6 +240,12 @@ class McpTransportIntegrationTest extends WP_UnitTestCase {
 			'params' => $params,
 		) ) );
 		$request->add_header( 'Content-Type', 'application/json' );
+		
+		// Include authorization header from $_SERVER if set.
+		if ( isset( $_SERVER['HTTP_AUTHORIZATION'] ) ) {
+			$request->add_header( 'Authorization', sanitize_text_field( wp_unslash( $_SERVER['HTTP_AUTHORIZATION'] ) ) );
+		}
+		
 		return $request;
 	}
 
@@ -260,6 +266,12 @@ class McpTransportIntegrationTest extends WP_UnitTestCase {
 		) ) );
 		$request->add_header( 'Content-Type', 'application/json' );
 		$request->add_header( 'Accept', 'application/json, text/event-stream' );
+		
+		// Include authorization header from $_SERVER if set.
+		if ( isset( $_SERVER['HTTP_AUTHORIZATION'] ) ) {
+			$request->add_header( 'Authorization', sanitize_text_field( wp_unslash( $_SERVER['HTTP_AUTHORIZATION'] ) ) );
+		}
+		
 		return $request;
 	}
 
@@ -452,6 +464,10 @@ class McpTransportIntegrationTest extends WP_UnitTestCase {
 			'method'  => 'ping',
 		) ) );
 		$streamable_request->add_header( 'Content-Type', 'application/json' );
+		// Include authorization header from $_SERVER if set.
+		if ( isset( $_SERVER['HTTP_AUTHORIZATION'] ) ) {
+			$streamable_request->add_header( 'Authorization', sanitize_text_field( wp_unslash( $_SERVER['HTTP_AUTHORIZATION'] ) ) );
+		}
 		// Missing Accept header
 		$streamable_response = rest_do_request( $streamable_request );
 		$this->assertEquals( 400, $streamable_response->get_status(), 'Streamable should require Accept header' );
@@ -488,6 +504,10 @@ class McpTransportIntegrationTest extends WP_UnitTestCase {
 		) ) );
 		$streamable_request->add_header( 'Content-Type', 'application/json' );
 		$streamable_request->add_header( 'Accept', 'application/json, text/event-stream' );
+		// Include authorization header from $_SERVER if set.
+		if ( isset( $_SERVER['HTTP_AUTHORIZATION'] ) ) {
+			$streamable_request->add_header( 'Authorization', sanitize_text_field( wp_unslash( $_SERVER['HTTP_AUTHORIZATION'] ) ) );
+		}
 		$streamable_response = rest_do_request( $streamable_request );
 		$this->assertEquals( 400, $streamable_response->get_status(), 'Streamable should require strict JSON-RPC format' );
 	}
