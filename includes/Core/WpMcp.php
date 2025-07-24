@@ -306,6 +306,8 @@ class WpMcp {
 		unset( $args['permission_callback'] );
 		unset( $args['rest_alias'] );
 		unset( $args['disabled_by_rest_crud'] );
+		unset( $args['tool_type_enabled'] );
+		unset( $args['tool_enabled'] );
 		$this->tools[] = $args;
 	}
 
