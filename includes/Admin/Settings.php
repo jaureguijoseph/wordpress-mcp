@@ -132,7 +132,9 @@ class Settings {
 					'saveSettings'                      => __( 'Save Settings', 'wordpress-mcp' ),
 					'settingsSaved'                     => __( 'Settings saved successfully!', 'wordpress-mcp' ),
 					'settingsError'                     => __( 'Error saving settings. Please try again.', 'wordpress-mcp' ),
+					// translators: %1$s: tool name, %2$s: action (enabled/disabled).
 					'toolEnabled'                       => __( 'Tool %1$s has been %2$s.', 'wordpress-mcp' ),
+					// translators: %1$s: tool name, %2$s: action (enabled/disabled).
 					'toolDisabled'                      => __( 'Tool %1$s has been %2$s.', 'wordpress-mcp' ),
 				),
 			)
@@ -249,7 +251,7 @@ class Settings {
 		}
 
 		$tool_name = isset( $_POST['tool'] ) ? sanitize_text_field( wp_unslash( $_POST['tool'] ) ) : '';
-		$enabled   = isset( $_POST['tool_enabled'] ) ? filter_var( $_POST['tool_enabled'], FILTER_VALIDATE_BOOLEAN ) : false;
+		$enabled   = isset( $_POST['tool_enabled'] ) ? filter_var( wp_unslash( $_POST['tool_enabled'] ), FILTER_VALIDATE_BOOLEAN ) : false;
 
 		if ( empty( $tool_name ) ) {
 			wp_send_json_error( array( 'message' => __( 'Tool name is required.', 'wordpress-mcp' ) ) );
@@ -264,6 +266,7 @@ class Settings {
 		wp_send_json_success(
 			array(
 				'message' => sprintf(
+					// translators: %1$s: tool name, %2$s: action (enabled/disabled).
 					__( 'Tool %1$s has been %2$s.', 'wordpress-mcp' ),
 					$tool_name,
 					$enabled ? __( 'enabled', 'wordpress-mcp' ) : __( 'disabled', 'wordpress-mcp' )
