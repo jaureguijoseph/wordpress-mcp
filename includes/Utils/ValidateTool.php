@@ -582,8 +582,12 @@ class ValidateTool {
 	 * @return bool True if valid ISO 8601 format.
 	 */
 	private static function is_valid_iso8601( string $timestamp ): bool {
-		$regex = '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?(?:Z|[+-]\d{2}:\d{2})$/';
-		return (bool) preg_match( $regex, $timestamp );
+		try {
+			$date = \DateTime::createFromFormat(\DateTime::ATOM, $timestamp);
+			return $date !== false && !\DateTime::getLastErrors()['warning_count'] && !\DateTime::getLastErrors()['error_count'];
+		} catch (\Exception $e) {
+			return false;
+		}
 	}
 
 	/**
