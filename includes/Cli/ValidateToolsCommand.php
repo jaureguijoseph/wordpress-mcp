@@ -1,6 +1,6 @@
 <?php //phpcs:ignore
 declare(strict_types=1);
-// phpcs:disable -- WP_CLI is available in WP-CLI environment
+// Ensure WP_CLI is available before executing WP-CLI-specific logic.
 
 namespace Automattic\WordpressMcp\Cli;
 
