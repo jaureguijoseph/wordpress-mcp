@@ -432,25 +432,25 @@ class ValidateTool {
 	/**
 	 * Validate a PHP callable (string, array, or closure).
 	 *
-	 * @param mixed  $callable The callable to validate.
+	 * @param mixed  $callback The callable to validate.
 	 * @param string $field_name The field name for error messages.
 	 * @param array  &$result The validation result (passed by reference).
 	 * @param string $level Validation level.
 	 * @return void
 	 */
-	private static function validate_php_callable( $callable, string $field_name, array &$result, string $level ): void {
+	private static function validate_php_callable( $callback, string $field_name, array &$result, string $level ): void {
 		// Check if it's a valid callable.
-		if ( ! is_callable( $callable ) ) {
+		if ( ! is_callable( $callback ) ) {
 			// If not callable, check if it's in a valid format.
-			if ( is_string( $callable ) ) {
+			if ( is_string( $callback ) ) {
 				// String function name - valid format even if function doesn't exist.
 				return;
 			}
 
-			if ( is_array( $callable ) && 2 === count( $callable ) ) {
+			if ( is_array( $callback ) && 2 === count( $callback ) ) {
 				// Array format [class/object, method] - valid format.
-				$class_or_object = $callable[0];
-				$method          = $callable[1];
+				$class_or_object = $callback[0];
+				$method          = $callback[1];
 
 				if ( ! is_string( $method ) ) {
 					self::add_issue( $result, "Field '{$field_name}' array format requires method name as string.", $level );
@@ -471,7 +471,7 @@ class ValidateTool {
 				return;
 			}
 
-			if ( is_object( $callable ) && ( $callable instanceof \Closure ) ) {
+			if ( is_object( $callback ) && ( $callback instanceof \Closure ) ) {
 				// Closure/anonymous function - valid.
 				return;
 			}
