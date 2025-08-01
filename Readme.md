@@ -4,20 +4,20 @@
 
 A comprehensive WordPress plugin that implements the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) to expose WordPress functionality through standardized interfaces. This plugin enables AI models and applications to interact with WordPress sites securely using multiple transport protocols and enterprise-grade authentication.
 
-## ✨ Features
+## Features
 
--   🔄 **Dual Transport Protocols**: STDIO and HTTP-based (Streamable) transports
--   🔐 **JWT Authentication**: Secure token-based authentication with management UI
--   🎛️ **Admin Interface**: React-based token management and settings dashboard
--   🤖 **AI-Friendly APIs**: JSON-RPC 2.0 compliant endpoints for AI integration
--   🏗️ **Extensible Architecture**: Custom tools, resources, and prompts support
--   🔌 **WordPress Feature API**: Adapter for standardized WordPress functionality
--   🧪 **Experimental REST API CRUD Tools**: Generic tools for any WordPress REST API endpoint
--   🧪 **Comprehensive Testing**: 200+ test cases covering all protocols and authentication
--   ⚡ **High Performance**: Optimized routing and caching mechanisms
--   🔒 **Enterprise Security**: Multi-layer authentication and audit logging
+-   **Dual Transport Protocols**: STDIO and HTTP-based (Streamable) transports
+-   **JWT Authentication**: Secure token-based authentication with management UI
+-   **Admin Interface**: React-based token management and settings dashboard
+-   **AI-Friendly APIs**: JSON-RPC 2.0 compliant endpoints for AI integration
+-   **Extensible Architecture**: Custom tools, resources, and prompts support
+-   **WordPress Feature API**: Adapter for standardized WordPress functionality
+-   **Experimental REST API CRUD Tools**: Generic tools for any WordPress REST API endpoint
+-   **Comprehensive Testing**: 200+ test cases covering all protocols and authentication
+-   **High Performance**: Optimized routing and caching mechanisms
+-   **Enterprise Security**: Multi-layer authentication and audit logging
 
-## 🏗️ Architecture
+## Architecture
 
 The plugin implements a dual transport architecture:
 
@@ -42,7 +42,7 @@ WordPress MCP Plugin
 | **STDIO**      | `/wp/v2/wpmcp`            | WordPress-style | JWT + App Passwords | Legacy compatibility |
 | **Streamable** | `/wp/v2/wpmcp/streamable` | JSON-RPC 2.0    | JWT only            | Modern AI clients    |
 
-## 🚀 Installation
+## Installation
 
 ### Quick Install
 
@@ -61,7 +61,7 @@ composer install --no-dev
 npm install && npm run build
 ```
 
-## 🔐 Authentication Setup
+## Authentication Setup
 
 ### JWT Token Generation
 
@@ -164,7 +164,7 @@ npx @modelcontextprotocol/inspector \
 }
 ```
 
-## 🎯 Usage
+## Usage
 
 ### With MCP Clients
 
@@ -196,9 +196,9 @@ The streamable transport provides a direct JSON-RPC 2.0 compliant endpoint, whil
 | `prompts/list`   | List available prompts   | Both              |
 | `prompts/get`    | Get prompt template      | Both              |
 
-### 🧪 Experimental REST API CRUD Tools
+### Experimental REST API CRUD Tools
 
-⚠️ **EXPERIMENTAL FEATURE**: This functionality is experimental and may change or be removed in future versions.
+**EXPERIMENTAL FEATURE**: This functionality is experimental and may change or be removed in future versions.
 
 When enabled via `Settings > WordPress MCP > Enable REST API CRUD Tools`, the plugin provides three powerful generic tools that can interact with any WordPress REST API endpoint:
 
@@ -232,7 +232,7 @@ When enabled via `Settings > WordPress MCP > Enable REST API CRUD Tools`, the pl
 -   **Standards Compliant**: Uses standard HTTP methods (GET, POST, PATCH, DELETE)
 -   **Permission Safe**: Inherits WordPress user capabilities and respects endpoint permissions
 
-## 🔧 Development
+## Development
 
 ### Project Structure
 
@@ -350,7 +350,7 @@ npm run build
 npm run start
 ```
 
-## 🔒 Security
+## Security
 
 ### Best Practices
 
@@ -364,14 +364,14 @@ npm run start
 
 ### Security Features
 
--   ✅ JWT signature validation
--   ✅ Token expiration and revocation
--   ✅ User capability inheritance
--   ✅ Secure secret key generation
--   ✅ Audit logging for security events
--   ✅ Protection against malformed requests
+-   JWT signature validation
+-   Token expiration and revocation
+-   User capability inheritance
+-   Secure secret key generation
+-   Audit logging for security events
+-   Protection against malformed requests
 
-## 📊 Testing Coverage
+## Testing Coverage
 
 The plugin includes extensive testing:
 
@@ -383,7 +383,7 @@ The plugin includes extensive testing:
 
 View detailed testing documentation in [`tests/README.md`](tests/README.md).
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -413,9 +413,9 @@ The plugin provides granular control over CRUD operations:
 -   **Enable Delete Tools**: ⚠️ Allow DELETE operations via MCP tools (use with caution)
 -   **Enable REST API CRUD Tools**: 🧪 Enable experimental generic REST API access tools
 
-⚠️ **Security Note**: Delete operations can permanently remove data. Only enable delete tools if you trust all users with MCP access.
+**Security Note**: Delete operations can permanently remove data. Only enable delete tools if you trust all users with MCP access.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md).
 
@@ -427,7 +427,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 4. Set up WordPress test environment
 5. Run tests with `vendor/bin/phpunit`
 
-## 📚 Documentation
+## Documentation
 
 -   **Documentation Overview**: [docs/README.md](docs/README.md)
 -   **Client Setup Guide**: [docs/client-setup.md](docs/client-setup.md)
@@ -440,16 +440,16 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 -   **Register MCP Resources**: [docs/register-mcp-resources.md](docs/register-mcp-resources.md)
 -   **Testing Guide**: [tests/README.md](tests/README.md)
 
-## 🆘 Support
+## Support
 
 For support and questions:
 
--   📖 **Documentation**: [docs/README.md](docs/README.md)
--   🐛 **Bug Reports**: [GitHub Issues](https://github.com/Automattic/wordpress-mcp/issues)
--   💬 **Discussions**: [GitHub Discussions](https://github.com/Automattic/wordpress-mcp/discussions)
--   ✉️ **Contact**: Reach out to the maintainers
+-   **Documentation**: [docs/README.md](docs/README.md)
+-   **Bug Reports**: [GitHub Issues](https://github.com/Automattic/wordpress-mcp/issues)
+-   **Discussions**: [GitHub Discussions](https://github.com/Automattic/wordpress-mcp/discussions)
+-   **Contact**: Reach out to the maintainers
 
-## 📄 License
+## License
 
 This project is licensed under the [GPL v2 or later](LICENSE).
 
